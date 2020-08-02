@@ -13,6 +13,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const listsRouter = require('./routes/lists');
 const tasksRouter = require('./routes/tasks');
+const { handlebars } = require('hbs');
 
 const app = express();
 require('./config/auth');
