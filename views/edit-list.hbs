@@ -1,0 +1,19 @@
+<div class="card" style="margin: auto; width: 60%">
+    <div class="card-body">
+        <div class="card-header">
+            <h2 style="text-align: center;">Editar Lista</h2>
+        </div>
+        <div class="card-body">
+            <form action="/lists/edit-list/{{list._id}}" method="POST">
+                <div class="form-group">
+                    <label for="title">Titulo</label>
+                    <input type="text" class="form-control" name="title" value="{{list.title}}" required>
+            </div>
+                    <label for="title">Descrição</label>
+                    <textarea name="description" class="form-control" id="description" cols="30" rows="10" required>{{list.description}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2" style="width: 100%">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
