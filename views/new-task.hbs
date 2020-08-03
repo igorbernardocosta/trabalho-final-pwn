@@ -1,25 +1,24 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-xl-8">
+<div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-7">
             <div class="card">
+                <div class="card-header">
+                    <h2 style="text-align: center;">Criar tarefa</h2>
+                </div>
                 <div class="card-body">
-                    <div class="card-header">
-                        <h2>Criar tarefa</h2>
-                    </div>
-                    <div class="card-body">
-                        <form action="/tasks/new-task/{{list.id}}" method="POST">
-                            <div class="form-group">
-                                <label for="title">Titulo</label>
-                                <input type="text" class="form-control" name="title" placeholder="Informe o nome da lista" required>
+                    <form action="/tasks/new-task/{{list.id}}" method="POST">
+                        <div class="form-group">
+                            <label for="title">Titulo</label>
+                            <input type="text" class="form-control" name="title" placeholder="Informe o nome da lista" required>
                         </div>
-                        <form action="" method="POST">
-                            <div class="form-group">
-                                <label for="title">Titulo</label>
-                                <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="Descrição da lista" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-2" style="width: 100%">Cadastar</button>
-                        </form>
-                    </div>
+                        <div class="form-group">
+                            <label for="title">Descrição</label>
+                            <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="Descrição da lista" required></textarea>
+                        </div>
+                        <div style="text-align: right;">
+                            <button type="submit" class="btn btn-primary mt-2">Cadastar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
