@@ -1,38 +1,40 @@
-
-<div class="card" style="margin: auto">
-    <div class="card-header">
-         <h2 style="text-align: center;">Crie sua conta</h2>
-    </div>
-    <div class="card-body">
-        {{#if error}}
-                <div class="alert alert-danger">{{error}}</div>
-        {{else}}
-
-        {{/if}}
-        
-        {{#each errors}}
-            <div class="alert alert-danger">{{texto}}</div>        
-        {{else}}
-            
-        {{/each}}
-        <form action="/users/register" method="POST">
-            <div class="form-group">
-                <label for="name">Nome Completo</label>
-                <input type="text" class="form-control" name="name" placeholder="Seu nome completo" required>
+<div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2 style="text-align: center;">Crie sua conta</h2>
+                </div>
+                <div class="card-body">
+                    {{#if error}}
+                        <div class="alert alert-danger">{{error}}</div>
+                    {{/if}}
+                    {{#each errors}}
+                        <div class="alert alert-danger">{{texto}}</div>
+                    {{/each}}
+                    <form action="/users/register" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" class="form-control" name="name" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Seu e-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" name="password" placeholder="Sua senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-02">Repita sua senha</label>
+                            <input type="password" class="form-control" name="password02" placeholder="Repita sua senha" required>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">Cadastar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Seu e-mail" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" class="form-control" name="password" placeholder="Sua senha" required>
-            </div>
-            <div class="form-group">
-                <label for="password-02">Repita sua senha</label>
-                <input type="password" class="form-control" name="password02" placeholder="Repita sua senha" required>
-            </div>
-            <button type="submit" class="btn btn-primary mt-2" style="width: 100%">Entrar</button>
-        </form>
+        </div>
     </div>
 </div>
