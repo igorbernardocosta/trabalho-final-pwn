@@ -17,11 +17,11 @@
                 {{#each tasks}}
                         <div class="card">
                             <div class="card-header" id="heandingOne">
-                                <div class="row h-100 align-items-center">
-                                    <div class="col-12 col-sm-8 col-md-5 col-lg-5 col-xl-5">
-                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{this._id}}" aria-expanded="true" aria-controls="collapse{{this._id}}" style="color: black;">{{this.title}}</button>
+                                <div class="row h-100 align-items-center" >
+                                    <div class=" col-12 col-sm-8 col-md-5 col-lg-5 col-xl-5">
+                                        <a href="" type="button" data-toggle="collapse" data-target="#collapse{{this._id}}" aria-expanded="true" aria-controls="collapse{{this._id}}" style="color: black;">{{this.title}}</a>
                                     </div>
-                                    <div class="col-12 col-sm-4 col-md-2 col-lg-2 col-xl-2" style="text-align: center;">
+                                    <div class="col-12 col-sm-4 col-md-2 col-lg-2 col-xl-2 d-block" style="text-align: center;">
                                         {{#if this.status}}
                                             <span class="badge badge-success" style="width: 100px; height: 20px ;vertical-align: middle;">Concluído</span>
                                         {{else}}
