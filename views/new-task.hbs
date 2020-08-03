@@ -1,21 +1,27 @@
-<div class="card" style="margin: auto;">
-    <div class="card-body">
-        <div class="card-header">
-            <h2>Criar tarefa</h2>
-        </div>
-        <div class="card-body">
-            <form action="/tasks/new-task/{{list.id}}" method="POST">
-                <div class="form-group">
-                    <label for="title">Titulo</label>
-                    <input type="text" class="form-control" name="title" placeholder="Informe o nome da lista" required>
-            </div>
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label for="title">Titulo</label>
-                    <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="Descrição da lista" required></textarea>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h2>Criar tarefa</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/tasks/new-task/{{list.id}}" method="POST">
+                            <div class="form-group">
+                                <label for="title">Titulo</label>
+                                <input type="text" class="form-control" name="title" placeholder="Informe o nome da lista" required>
+                        </div>
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="title">Titulo</label>
+                                <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="Descrição da lista" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2" style="width: 100%">Cadastar</button>
+                        </form>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2" style="width: 100%">Cadastar</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
