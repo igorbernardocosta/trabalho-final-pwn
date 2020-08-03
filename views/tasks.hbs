@@ -1,65 +1,64 @@
-<h1>Tarefas</h1>
-<h2>{{list.title}}</h2><br>
-<p>{{list.description}}</p>
-<a href="/lists/{{this.user._id}}">Voltar para Listas</a>
- | 
-<a href="/tasks/new-task/{{list._id}}">Nova Tarefa</a><br><br>
-
-<script>
-    Handlebars.registerHelper('ifCond', function(v1, v2, options) {
-        if(v1 === v2) {
-            return options.fn(this);
-        }
-            return options.inverse(this);
-});
-</script>
-
-<div class="accordion" id="accordionExample">
-{{#each tasks}}
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-          
-        <table>
-            <tr>
-                <td style="width: 50%"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{this._id}}" aria-expanded="true" aria-controls="collapse{{this._id}}" style="color: black;">
-                    {{this.title}}
-                </td>
-                <td style="width: 50%">{{#if this.status}}
-                    <span class="badge badge-success">Concluído</span>
-                {{else}}
-                    <span class="badge badge-warning">Em andamento</span>
-                {{/if}}
-                </td>
- 
-                <td><form action="/tasks/status/{{this._id}}" method="POST">
-                        <input type="hidden" name="taskId" value="{{this._id}}">
-                        {{#if this.status}}
-                            <button type="submit" class="btn btn-warning btn-sm float-right" style="width: 120px;">Em andamento</button>
-                        {{else}}
-                            <button type="submit" class="btn btn-success btn-sm float-right">Concluido</button>
-                        {{/if}}
-                    </form>
-                </td>
-                <td><a href="/tasks/edit-task/{{this._id}}" class="btn btn-primary btn-sm float-right">Editar</a></td>
-                <td>
-                    <form action="/tasks/delete/{{list._id}}/{{this._id}}" method="POST">
-                        <input type="hidden" name="taskId" value="{{this._id}}">
-                        <button class="btn btn-danger btn-sm float-right">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
-      </h5>
+<div class="container h-100">
+    <div class="row">
+        <div class="col-12">
+                <h2>Tarefas</h2>
+                <h3>{{list.title}}</h3><br>
+                <p>{{list.description}}</p><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="/lists/{{this.user._id}}">Voltar para Listas</a> | <a href="/tasks/new-task/{{list._id}}">Nova Tarefa</a><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="accordion" id="accordionExample">
+                {{#each tasks}}
+                        <div class="card">
+                            <div class="card-header" id="heandingOne">
+                                <div class="row h-100 align-items-center">
+                                    <div class="col-12 col-sm-8 col-md-5 col-lg-5 col-xl-5">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{this._id}}" aria-expanded="true" aria-controls="collapse{{this._id}}" style="color: black;">{{this.title}}</button>
+                                    </div>
+                                    <div class="col-12 col-sm-4 col-md-2 col-lg-2 col-xl-2" style="text-align: center;">
+                                        {{#if this.status}}
+                                            <span class="badge badge-success" style="width: 100px; height: 20px ;vertical-align: middle;">Concluído</span>
+                                        {{else}}
+                                            <span class="badge badge-warning" style="width: 100px; height: 20px ;vertical-align: middle;">Em andamento</span>
+                                        {{/if}}
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                                        <form action="/tasks/delete/{{list._id}}/{{this._id}}" method="POST">
+                                            <input type="hidden" name="taskId" value="{{this._id}}">
+                                            <button class="btn btn-danger btn-sm float-right ml-1">Excluir</button>
+                                        </form>
+                                        <a href="/tasks/edit-task/{{this._id}}" class="btn btn-primary btn-sm float-right">Editar</a>
+                                        <form action="/tasks/status/{{this._id}}" method="POST">
+                                            <input type="hidden" name="taskId" value="{{this._id}}">
+                                            {{#if this.status}}
+                                                <button type="submit" class="btn btn-warning btn-sm float-right mr-1">Em andamento</button>
+                                            {{else}}
+                                                <button type="submit" class="btn btn-success btn-sm float-right mr-1">Concluido</button>
+                                            {{/if}}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="collapse{{this._id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            {{this.description}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 
-    <div id="collapse{{this._id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        {{this.description}}
-      </div>
-    </div>
-  </div>
 
-
-{{/each}}
 </div>
