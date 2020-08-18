@@ -1,24 +1,20 @@
-<h1>Seja bem-vindo {{dados.name}}!</h1><br>
+  {{>_navbar}}
 
-
-<a href="/lists/new-list/{{dados._id}}">Nova Lista</a>
- | 
-<a href="/users/logout">Logout</a><br><br>
-
-<h2>Listas de tarefas</h2><br>
-
-<table class="table table-hover">
- <tbody>
-{{#each listUser}}
-    <tr>
-      <td><a href="/tasks/{{this._id}}" class="align-middle" style="color:black; width: 100%">{{this.title}}</a></td>
-      <td style="width: 10px;"><a href="/lists/edit-list/{{this._id}}" class="btn btn-primary btn-sm float-right">Editar</a></td>
-      <td style="width: 10px;"> <form action="/lists/delete" method="POST">
-              <input type="hidden" name="listId" value="{{this.id}}">
-              <button type="submit" class="btn btn-danger btn-sm float-right">Excluir</button>
+<div class="container"> 
+  <h2>Listas de tarefas</h2><br>
+  <table class="table table-hover">
+    <tbody>
+      {{#each listUser}}
+        <tr>
+          <td><a href="/tasks/{{this._id}}" class="align-middle" style="color:black;">{{this.title}}</a></td>
+          <td><form action="/lists/delete" method="POST">
+            <input type="hidden" name="listId" value="{{this.id}}">
+            <button type="submit" class="btn btn-danger btn-sm float-right mr-4">Excluir</button>
             </form>
-      </td>
-    </tr>
-{{/each}}
-</tbody>
-</table>
+            <a href="/lists/edit-list/{{this._id}}" class="btn btn-primary btn-sm float-right mr-1">Editar</a>
+           </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

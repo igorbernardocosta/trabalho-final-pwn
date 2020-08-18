@@ -2,28 +2,29 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const task = require('../models/tasks');
-const list = require('../models/lists')
+const list = require('../models/lists');
+const {ensureAuthenticated} = require('../helpers/authenticated');
 
-function ensureAuthenticated(req, res, next){
-  if(req.isAuthenticated()){
-    return next();}
 
-    res.redirect('/users/login')
-  }
 
 router.get('/:id', ensureAuthenticated, async (req, res) => {
   const tasks = await task.find({list: req.params.id})
   const lists = await list.findOne({_id: req.params.id})
-  res.render('tasks', {title: 'Tarefas', list: lists, tasks});
+
+  res.render('tasks', {title: 'Tarefas', list: lists, dados: req.user, tasks});
 });
 
-router.get('/new-task/:id', ensureAuthenticated, function(req, res){
+router.get('/new-task/:id', ensureAuthenticated, async function(req, res){
   res.render('new-task', {title: 'Cadastrar Tarefa', list: req.params});
 })
 
-
 router.post('/new-task/:id', ensureAuthenticated, async function(req, res){
-  await task.create({title: req.body.title, description: req.body.description, user: req.user._id, list: req.params.id})
+  await task.create({
+    title: req.body.title,
+    description: req.body.description,
+    user: req.user._id,
+    list: req.params.id
+  })
   res.redirect(`/tasks/${req.params.id}`)
 })
 

@@ -64,7 +64,7 @@ router.get('/validated', (req, res) => {
 });
 
 router.get('/logout', (req, res) =>{
-  req.logOut()
+  req.logout()
   req.flash('success_msg', 'Deslogado com sucesso')
   res.redirect('/users/login')
 })

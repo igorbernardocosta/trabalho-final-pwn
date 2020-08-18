@@ -3,13 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const list = require('../models/lists');
 const task = require('../models/tasks');
+const {ensureAuthenticated} = require('../helpers/authenticated');
 
-function ensureAuthenticated(req, res, next){
-  if(req.isAuthenticated()){
-    return next();}
-
-    res.redirect('/users/login')
-  }
 
 router.get('/:id', ensureAuthenticated, async (req, res) => {
   const listUser = await list.find({user: req.user._id})

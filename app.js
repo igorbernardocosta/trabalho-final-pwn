@@ -30,8 +30,8 @@ app.use(flash())
 
 //Middleware
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg")
-  res.locals.error_msg = req.flash("error_msg")
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
   res.locals.error = req.flash('error')
   res.locals.user = req.user || null;
   next()
@@ -39,6 +39,10 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+const hbs = require('hbs')
+
+hbs.registerPartials(__dirname + '/views/partials/');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
